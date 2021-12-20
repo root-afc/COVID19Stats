@@ -1,0 +1,38 @@
+<br> <br>
+<div class="container" style="color: blue ;text-align: center"><h1 class="animated animate__animated animate__bounce" style="font-family: Raleway "><b>Alvaro Fiestas</b></h1></div>
+<br> <br>
+
+<div class="shadowcard container">
+  <br>
+  <h2>Casos COVID-19 en Perú al {{fec | date : 'yyyy-MM-dd' :'-2000' }}</h2>
+  <br>
+  <div id="divChart" class="container">
+    <canvas id="myChart" ></canvas>
+  </div>
+  <br>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Confirmados</th>
+      <th>Muertes</th>
+      <th>Recuperados</th>
+      <th>Activos</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  *ngFor="let listaCaso of listaCasos | orderBy: order : true  |paginate:{itemsPerPage:10,currentPage: p}">
+      <td>{{listaCaso.Date| date:'yyyy-MM-dd': '+2000': ''}}</td>
+      <td>{{listaCaso.Confirmed}}</td>
+      <td>{{listaCaso.Deaths}}</td>
+      <td>{{listaCaso.Recovered}}</td>
+      <td>{{listaCaso.Active}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente">
+
+  </pagination-controls>
+</div>
+<br>
+<br>
